@@ -28,16 +28,21 @@ public class MainServlet extends HttpServlet {
         if (action.equalsIgnoreCase("/logout")) {
             HttpSession session = req.getSession();
             String username = session.getAttribute("user").toString();
-            Cookie cookie = new Cookie(username, session.getAttribute("exp").toString());
+            Cookie cookie = new Cookie(String.valueOf(username.hashCode()), session.getAttribute("exp").toString());
             cookie.setMaxAge(3*60);
             resp.addCookie(cookie);
-//            session.setMaxInactiveInterval(0);
-//            session.invalidate();
+            session.setMaxInactiveInterval(0);
+            session.invalidate();
 
             logger.info("User " + username + " logged out");
             resp.sendRedirect("/Calculator/login.jsp");
         }
         else if (action.equalsIgnoreCase("/addNumber")) {
+            HttpSession session = req.getSession();
+
+            if(session.getAttribute("exp").equals("ДУРАК ЧО ТВАРИШ КТО ТАК ДЕЛАЕТ ВООБЩЕ?\n" +
+                    "ТЫ ЧО ПЬЯНЫЙ ПО 2 ЗНАКА НАФИГАЧИВАТЬ?"))
+                session.setAttribute("exp", rh.getOld());
             resp.sendRedirect("/Calculator/addNumber.jsp");
         }
         else if (action.equalsIgnoreCase("/expression")) {
@@ -83,9 +88,7 @@ public class MainServlet extends HttpServlet {
                 logger.error("Cookies" + cookies != null);
                 if (cookies != null) {
                     for (int i = 0; i < cookies.length; i++) {
-                        logger.error(cookies[i].getName() + " : " + cookies[i].getValue());
-                        if (cookies[i].getName().equals(log)) {
-                            logger.error(cookies[i].getName());
+                        if (cookies[i].getName().equals(String.valueOf(log.hashCode()))) {
                             session.setAttribute("exp", cookies[i].getValue());
                         }
                     }

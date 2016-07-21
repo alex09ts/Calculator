@@ -5,7 +5,8 @@ import org.apache.log4j.Logger;
 
 public class RequestHandler {
 
-    private boolean charIsLast = true;
+    private boolean charIsLast = false;
+    private String old;
     private static final Logger logger = Logger.getLogger(RequestHandler.class);
 
     public RequestModel handleTheRequest(RequestModel requestModel){
@@ -24,7 +25,7 @@ public class RequestHandler {
         logger.info("Char is Last :::::::" + charIsLast);
         if(charIsLast){
             if(containsC){
-
+                old = prev;
                 return "ДУРАК ЧО ТВАРИШ КТО ТАК ДЕЛАЕТ ВООБЩЕ?\n" +
                         "ТЫ ЧО ПЬЯНЫЙ ПО 2 ЗНАКА НАФИГАЧИВАТЬ?";
             }else{
@@ -43,4 +44,7 @@ public class RequestHandler {
         return charIsLast;
     }
 
+    public String getOld() {
+        return old;
+    }
 }
