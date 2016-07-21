@@ -80,11 +80,11 @@ public class MainServlet extends HttpServlet {
                 session.setMaxInactiveInterval(3 * 60);
                 session.setAttribute("exp", "");
                 Cookie cookies[] = req.getCookies();
-                logger.error("Cookies"+cookies!=null);
+                logger.error("Cookies" + cookies != null);
                 if (cookies != null) {
                     for (int i = 0; i < cookies.length; i++) {
-                        logger.error(cookies[i].getName()+" : "+ cookies[i].getValue());
-                        if(cookies[i].getName().equals(log)){
+                        logger.error(cookies[i].getName() + " : " + cookies[i].getValue());
+                        if (cookies[i].getName().equals(log)) {
                             logger.error(cookies[i].getName());
                             session.setAttribute("exp", cookies[i].getValue());
                         }
@@ -97,6 +97,10 @@ public class MainServlet extends HttpServlet {
 
                 resp.sendRedirect("login.jsp");
             }
+        }else if(action.equalsIgnoreCase("/clear")){
+            HttpSession session = req.getSession();
+            session.setAttribute("exp", "");
+            resp.sendRedirect("index.jsp");
         }else{
             HttpSession session = req.getSession(true);
             String exp = rh.getExp(new RequestModel(session, req, resp));

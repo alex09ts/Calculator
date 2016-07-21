@@ -6,6 +6,10 @@
     <%@ include file="header.jsp" %>
     <p align="center"><font size="10"  face="Arial">Exp:  ${exp}  </font></p>
     <br>
+    <form align="center" action="clear" method="POST">
+        <input type="submit" value="Clear the Expression"/>
+    </form>
+    <br>
     <%@ include file="footer.jsp" %>
 </body>
 </html>
