@@ -4,4 +4,33 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+    <filter>
+        <filter-name>CustomFilter</filter-name>
+        <filter-class>filters.CustomFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CustomFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>listeners.CustomHttpSessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>listeners.CustomServletContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>listeners.CustomServletRequestListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>servlets.MainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>

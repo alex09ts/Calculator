@@ -4,9 +4,7 @@
 <html>
     <body>
         <%@ include file="header.jsp" %>
-        <h1 align="center">Calculator</h1>
-        <h1 align="center">Of Gods</h1>
+        <h1 align = "center">Result ${result}</h1>
         <%@ include file="footer.jsp" %>
     </body>
 </html>
-
