@@ -3,9 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html>
     <body>
-        <form align="center" action="logout" method="GET">
+        <p align="center">
             <c:out value ="Вы вошли как ${user}, "/>
-            <input type="Submit" value="Logout"/>
-        </form>
+            <a href="./logout"><button type="button">Log out</button></a>
+        </p>
     </body>
 </html>

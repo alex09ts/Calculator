@@ -87,9 +87,9 @@ public class MainServlet extends HttpServlet {
                 Cookie cookies[] = req.getCookies();
                 logger.error("Cookies" + cookies != null);
                 if (cookies != null) {
-                    for (int i = 0; i < cookies.length; i++) {
-                        if (cookies[i].getName().equals(String.valueOf(log.hashCode()))) {
-                            session.setAttribute("exp", cookies[i].getValue());
+                    for (Cookie cooky : cookies) {
+                        if (cooky.getName().equals(String.valueOf(log.hashCode()))) {
+                            session.setAttribute("exp", cooky.getValue());
                         }
                     }
                 }

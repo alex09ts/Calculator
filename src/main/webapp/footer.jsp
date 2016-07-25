@@ -5,21 +5,13 @@
     <body>
         <table align="center" border="0" cellspacing="0" cellpadding="6">
             <tr>
-            <form action="addCharacter" method="GET">
-            <td><input type="submit" value="Add char" style="width:100Px;height:20Px"/></td>
-            </form>
-            <form action="addNumber" method="GET">
-            <td><input type="submit" value="Add value" style="width:100Px;height:20Px"/></td>
-            </form>
+            <td><a href="./addCharacter"><button type="button" style="width:100Px;height:20Px">Add char</button></a></td>
+            <td><a href="./addNumber"><button type="button" style="width:100Px;height:20Px">Add number</button></a></td>
             </tr>
 
             <tr>
-            <form action="expression" method="GET">
-            <td><input type="submit" value="Expression" style="width:100Px;height:20Px"/></td>
-            </form>
-            <form action="result" method="GET">
-            <td><input type="submit" value="Result" style="width:100Px;height:20Px"/></td>
-            </form>
+            <td><a href="./expression"><button type="button" style="width:100Px;height:20Px">Expression</button></a></td>
+            <td><a href="./result"><button type="button" style="width:100Px;height:20Px">Result</button></a></td>
             </tr>
         </table>
     </body>
