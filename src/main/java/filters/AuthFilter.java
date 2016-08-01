@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class CustomFilter implements Filter {
+public class AuthFilter implements Filter {
 
-    private static final Logger logger = Logger.getLogger(CustomFilter.class);
+    private static final Logger logger = Logger.getLogger(AuthFilter.class);
 
     public void init(FilterConfig filterConfig) throws ServletException {
         //Cheto tut delayetsya
@@ -19,6 +19,7 @@ public class CustomFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+        logger.info("In Filter Action : " + request.getRequestURL()+ request.getMethod());
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login.jsp";
 

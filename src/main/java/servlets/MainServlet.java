@@ -35,7 +35,7 @@ public class MainServlet extends HttpServlet {
             session.invalidate();
 
             logger.info("User " + username + " logged out");
-            resp.sendRedirect("/Calculator/login.jsp");
+            resp.sendRedirect("login.jsp");
         }
         else if (action.equalsIgnoreCase("/addNumber")) {
             HttpSession session = req.getSession();
@@ -43,32 +43,23 @@ public class MainServlet extends HttpServlet {
             if(session.getAttribute("exp").equals("ДУРАК ЧО ТВАРИШ КТО ТАК ДЕЛАЕТ ВООБЩЕ?\n" +
                     "ТЫ ЧО ПЬЯНЫЙ ПО 2 ЗНАКА НАФИГАЧИВАТЬ?"))
                 session.setAttribute("exp", rh.getOld());
-            resp.sendRedirect("/Calculator/addNumber.jsp");
-        }
-        else if (action.equalsIgnoreCase("/expression")) {
-            resp.sendRedirect("/Calculator/expression.jsp");
+            resp.sendRedirect("addNumber.jsp");
         }
         else if (action.equalsIgnoreCase("/result")) {
             ExpressionParser parser = new ExpressionParser();
             String result = parser.parseTheExpression(req.getSession(false).getAttribute("exp").toString());
             req.setAttribute("result", result);
             req.getRequestDispatcher("result.jsp").forward(req, resp);
-            resp.sendRedirect("/Calculator/result.jsp");
+            resp.sendRedirect("result.jsp");
         }
-        else if (action.equalsIgnoreCase("/addCharacter")) {
-            resp.sendRedirect("/Calculator/addCharacter.jsp");
-        }
-
-//        if (path.equals("/addCharacter")) resp.sendRedirect("/Calculator/addCharacter.jsp");
-//        else if (path.equals("/addNumber")) resp.sendRedirect("/Calculator/addNumber.jsp");
-//        else if (path.equals("/expression")) resp.sendRedirect("/Calculator/expression.jsp");
-//        else if (path.equals("/result")) resp.sendRedirect("/Calculator/result.jsp");
-//        else req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String action = req.getServletPath();
+        logger.info("Action : "+action);
+
         if (action.equalsIgnoreCase("/login")) {
 
             String log = req.getParameter("login");

@@ -6,11 +6,11 @@
   <display-name>Archetype Created Web Application</display-name>
 
     <filter>
-        <filter-name>CustomFilter</filter-name>
-        <filter-class>filters.CustomFilter</filter-class>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>filters.AuthFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>CustomFilter</filter-name>
+        <filter-name>AuthFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 

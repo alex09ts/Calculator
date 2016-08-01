@@ -5,7 +5,7 @@
     <body>
         <p align="center">
             <c:out value ="Вы вошли как ${user}, "/>
-            <a href="./logout"><button type="button">Log out</button></a>
+            <a href="logout"><button type="button">Log out</button></a>
         </p>
     </body>
 </html>
